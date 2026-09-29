@@ -143,7 +143,8 @@ def test_table_output(timeline):
     assert "2026-09-29" in out and "SSH brute force" in out and "CRITICAL" in out
 
 
-def test_cli(samples, tmp_path, capsys):
+def test_cli(samples, tmp_path, capsys, monkeypatch):
+    monkeypatch.delenv("COLUMNS", raising=False)
     args = [
         "--wazuh",
         str(samples / "alerts.json"),
@@ -155,7 +156,10 @@ def test_cli(samples, tmp_path, capsys):
         "2026",
     ]
     assert main([*args, "--no-color"]) == 0
-    assert "Security audit log cleared" in capsys.readouterr().out
+    out = capsys.readouterr().out
+    # piped output uses a fixed wide layout, so summaries are not wrapped mid-phrase
+    assert "Security audit log cleared by CORP\\svc_backup" in out
+    assert " ".join(out.split()).count("SSH brute force: 14 failed logons") == 1
 
     assert main([*args, "-f", "json", "--min-severity", "critical"]) == 0
     data = json.loads(capsys.readouterr().out)

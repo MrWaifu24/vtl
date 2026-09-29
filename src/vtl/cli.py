@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import argparse
+import os
 import sys
 from datetime import timezone, tzinfo
 from pathlib import Path
@@ -14,6 +15,9 @@ from . import __version__
 from .models import Severity, parse_iso
 from .output import render
 from .timeline import Filters, build_timeline
+
+# Width used when the table is piped or redirected (no terminal to measure).
+PIPED_WIDTH = 160
 
 
 def _tz(value: str) -> tzinfo:
@@ -181,13 +185,17 @@ def main(argv: list[str] | None = None) -> int:
                     tl,
                     "table",
                     args.tz,
-                    Console(file=fh, width=160, no_color=True, force_terminal=False),
+                    Console(file=fh, width=PIPED_WIDTH, no_color=True, force_terminal=False),
                 )
             else:
                 fh.write(render(tl, args.format, args.tz) or "")
         err.print(f"[green]vtl: wrote {len(tl.events)} events to {args.output}[/]")
     elif args.format == "table":
-        render(tl, "table", args.tz, Console(no_color=args.no_color, highlight=False))
+        # Without a TTY rich falls back to a narrow default and wraps every summary;
+        # use a fixed wide layout unless the user set COLUMNS explicitly.
+        piped = not sys.stdout.isatty() and "COLUMNS" not in os.environ
+        width = PIPED_WIDTH if piped else None
+        render(tl, "table", args.tz, Console(no_color=args.no_color, highlight=False, width=width))
     else:
         sys.stdout.write(render(tl, args.format, args.tz) or "")
     return 0
