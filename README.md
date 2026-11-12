@@ -3,6 +3,7 @@
 [![CI](https://github.com/MrWaifu24/vtl/actions/workflows/ci.yml/badge.svg)](https://github.com/MrWaifu24/vtl/actions/workflows/ci.yml)
 [![Python](https://img.shields.io/badge/python-3.10%2B-3776AB?logo=python&logoColor=white)](pyproject.toml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+<a href="https://www.namtao.com/0rwx/"><picture><source media="(prefers-color-scheme: dark)" srcset=".github/ai-w-dark.svg"><img src=".github/ai-w-light.svg" alt="AI use: Level W (Write), with help from an AI co-writer" height="20"></picture></a>
 
 `vtl` takes logs from **Wazuh**, **Windows** and **Linux** and turns them into **one chronological investigation timeline**. It doesn't just dump events. It:
 
